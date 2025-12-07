@@ -6,41 +6,41 @@
 [![Graphics](https://img.shields.io/badge/Graphics-MinilibX-ff69b4?style=for-the-badge)](https://github.com/42Paris/minilibx-linux)
 [![42](https://img.shields.io/badge/School-42-000000?style=for-the-badge&logo=42)](https://42.fr/)
 
-## 🏔️ Introducción
+## 🏔️ Introduction
 
-FdF es un proyecto de algoritmia gráfica. El objetivo es representar un mapa topográfico (una malla de puntos con coordenadas X, Y, Z) en una ventana 2D, creando una representación "wireframe" (alambre) mediante proyección isométrica pura.
+FdF is a graphical algorithm project. The goal is to represent a topographic map (a mesh of points with X, Y, Z coordinates) in a 2D window, creating a "wireframe" representation using pure isometric projection.
 
-Este proyecto se centra en la **precisión del renderizado** y la implementación manual de algoritmos de trazado de líneas, prescindiendo de ayudas visuales externas o motores gráficos.
+This project focuses on **rendering precision** and the manual implementation of line-drawing algorithms, avoiding the use of external visual aids or high-level graphics engines.
 
 ---
 
-## 📸 Resultado
+## 📸 Result
 
 ![FdF Screenshot](assets/fdf.png)
-*(Renderizado del mapa en proyección isométrica estricta)*
+*(Map rendering in strict isometric projection)*
 
 ---
 
-## ⚙️ Ingeniería detrás del píxel
+## ⚙️ Engineering Behind the Pixel
 
-Al no utilizar librerías gráficas de alto nivel (como OpenGL), toda la lógica de dibujo está escrita en C:
+Since no high-level graphics libraries (like OpenGL) are used, all drawing logic is written entirely in C:
 
-1.  **Lectura y Parsing:** Conversión de mapas de texto (`.fdf`) a estructuras de datos en memoria, manejando coordenadas y asignación dinámica de memoria.
-2.  **Proyección Isométrica:** Transformación matemática de cada punto `(x, y, z)` del espacio tridimensional a un plano 2D `(x, y)` para simular profundidad.
-3.  **Algoritmo de Bresenham:** Implementación del clásico algoritmo para trazar líneas rectas perfectas entre dos puntos en una cuadrícula de píxeles, optimizando el uso de la CPU (uso de enteros en lugar de coma flotante donde es posible).
+1.  **Reading and Parsing:** Conversion of text maps (`.fdf`) into memory data structures, handling coordinates and dynamic memory allocation.
+2.  **Isometric Projection:** Mathematical transformation of each `(x, y, z)` point from 3D space to a 2D plane `(x, y)` to simulate depth.
+3.  **Bresenham's Algorithm:** Implementation of the classic algorithm to draw perfect straight lines between two points on a pixel grid, optimizing CPU usage (using integer arithmetic instead of floating-point where possible).
 
 ---
 
-## 🛠️ Instalación y Uso
+## 🛠️ Installation & Usage
 
-Este proyecto requiere las librerías básicas del sistema (MinilibX requiere X11 en Linux).
+This project requires basic system libraries (MinilibX requires X11 on Linux).
 
 ```bash
-# 1. Clona el repositorio
-git clone [https://github.com/grabier/FdF.git]
+# 1. Clone the repository
+git clone [https://github.com/grabier/FdF.git](https://github.com/grabier/FdF.git)
 
-# 2. Entra al directorio y compila
+# 2. Enter the directory and compile
 cd FdF && make
 
-# 3. Ejecuta con un mapa
+# 3. Run with a map
 ./fdf test_maps/42.fdf
